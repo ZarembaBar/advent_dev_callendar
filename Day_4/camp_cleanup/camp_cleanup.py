@@ -35,7 +35,18 @@ def compare_ranges(first_matrix, second_matrix):    #Function compare first and 
             count_of_included_ranges += 1
     return count_of_included_ranges
 
+def overlap_count(first_matrix, second_matrix):
+    number_of_cycles = len(first_matrix)
+    count_of_overlaps = 0
+
+    for cycle in range(number_of_cycles):
+        if first_matrix[cycle][0] > second_matrix[cycle][1] : pass
+        elif second_matrix[cycle][0] > first_matrix[cycle][1] : pass
+        else : count_of_overlaps += 1
+    return count_of_overlaps
+
 if __name__ == "__main__":
     first, second = open_file(input_file)
     first_ranges_matrix, second_ranges_matrix = convert_string_arrays_to_matrix_of_numbers(first, second)
     print(f"Number of included ranges: {compare_ranges(first_ranges_matrix, second_ranges_matrix)}")
+    print(f"Number of overlaps: {overlap_count(first_ranges_matrix, second_ranges_matrix)}")
